@@ -29,3 +29,19 @@ print(f"Average: {round(average,2)}")
 print(f"Grade: {grade}")
 print(f"Remark: {remark}")
 print("=" * 40)
+
+
+
+from access_control import compute_access_level, validate_access, audit_log
+
+CONTROL_NUM = 9
+FAVORITE_ARTIST = "BRUNO_MAJOR"
+
+@audit_log
+def run_protocol(control, artist):
+    level = compute_access_level(control, artist)
+    decision = validate_access(level, control)
+    return decision
+
+print(run_protocol(CONTROL_NUM, FAVORITE_ARTIST))
+
